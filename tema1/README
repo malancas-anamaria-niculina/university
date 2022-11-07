@@ -1,0 +1,59 @@
+### Rulare program:
+```
+mvn spring-boot:run
+```
+### Inchidere program:
+CTRL+C
+
+### Adaugarea unei noi retele:
+Din Postman se vor adauga urmatoarele informatii pentru a realiza request-ul:
+    - metoda: POST
+    - url: http://localhost:8080//petri/
+    - body: raw JSON de forma (exemplu)
+        {
+            "name": "Petri1"
+        }
+
+### Adaugarea unei noi tranzitii:
+Din Postman se vor adauga urmatoarele informatii pentru a realiza request-ul:
+    - metoda: POST
+    - url: http://localhost:8080//petri/
+    - body: raw JSON de forma (exemplu)
+        {
+            "petriId": 1,
+            "transitionName": "t0",
+            "tempStart": null,
+            "tempStop": null,
+            "secondsOfExecution": null,
+            "entryLocationId": 1,
+            "outputLocationId": null
+        }
+
+### Adaugarea unui nod in retea:
+Din Postman se vor adauga urmatoarele informatii pentru a realiza request-ul:
+    - metoda: POST
+    - url: http://localhost:8080/api/location/
+    - body: raw JSON de forma (exemplu)
+        {
+            "petriId": 1,
+            "locationName": "p0",
+            "numberOfTokens": 1,
+            "entryTransitionId": null,
+            "outputTransitionId": null
+        }
+
+### Vizualizarea marcajului curent:
+Din Postman se vor adauga urmatoarele informatii pentru a realiza request-ul:
+    - metoda: GET
+    - url: http://localhost:8080/api/location/mark/
+    - header: Se va transmite id-ul retelei Petri
+        -> Key: id
+        -> Value: 1 
+
+### Executia retelei Petri:
+Din Postman se vor adauga urmatoarele informatii pentru a realiza request-ul:
+    - metoda: POST
+    - url: http://localhost:8080/api/transition/execute/
+    - header: Se va transmite id-ul retelei Petri
+        -> Key: transitionName
+        -> Value: Petri1 
