@@ -21,15 +21,13 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "petri_id", nullable = false, unique = false)
-    private Integer petriId;
 
     @Column(name = "name", nullable = false, unique = true)
     private String locationName;
     @Column(name = "nr_of_tokens", nullable = false)
     private Integer numberOfTokens;
     @Column(name = "type", nullable = false)
-    private Integer type;
+    private String type;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "petri_id", referencedColumnName = "id")

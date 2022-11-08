@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class TransitionDto {
+    @JsonProperty("transitionId")
+    private Integer transitionId;
     @JsonProperty("petriId")
     private Integer petriId;
 
@@ -17,8 +19,4 @@ public class TransitionDto {
     private Integer tempStop;
     @JsonProperty("secondsOfExecution")
     private Integer secondsOfExecution;
-    @JsonProperty("entryLocationId")
-    private Integer entryLocationId;
-    @JsonProperty("outputLocationId")
-    private Integer outputLocationId;
 }

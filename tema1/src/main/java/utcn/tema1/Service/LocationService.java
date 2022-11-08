@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +24,9 @@ public class LocationService {
     private MapStructMapper mapstructMapper;
 
     public List<Location> getLocationNames(Integer petriId) {
-        List<Location> locations = locationRepository.findAll();
-        List<String> locationNames = new ArrayList<String>();
-        for (Location location : locations) {
-            if (location.getPetriId() == petriId) {
-                locationNames.add(location.getLocationName());
-            }
-        }
+        List<Location> locations = locationRepository.findAll().stream()
+                .filter(location -> location.getPetriId() == petriId).collect(Collectors.toList());
+
         return locations;
     }
 
@@ -43,7 +40,7 @@ public class LocationService {
     }
 
     public Map<String, Integer> getCurrentMark(Integer petriId) {
-        List<Location> locations = locationRepository.findAll();
+        List<Location> locations = getLocationNames(petriId);
         Collections.sort(locations, (o1, o2) -> (o1.getLocationName().compareTo(o2.getLocationName())));
         Map<String, Integer> mark = new HashMap<String, Integer>();
         locations.forEach(location -> mark.put(location.getLocationName(), location.getNumberOfTokens()));

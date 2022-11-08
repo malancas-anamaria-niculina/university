@@ -8,6 +8,7 @@ import utcn.tema1.DTO.TransitionDto;
 import utcn.tema1.Entity.Location;
 import utcn.tema1.Entity.Petri;
 import utcn.tema1.Entity.Transition;
+import utcn.tema1.Service.LocationService;
 
 @Component
 public class MapStructMapperImpl implements MapStructMapper {
@@ -19,9 +20,11 @@ public class MapStructMapperImpl implements MapStructMapper {
 
         Location location = new Location();
 
+        location.setId(locationDto.getLocationId());
         location.setPetriId(locationDto.getPetriId());
         location.setLocationName(locationDto.getLocationName());
         location.setNumberOfTokens(locationDto.getNumberOfTokens());
+        location.setType(locationDto.getType());
 
         return location;
     }
