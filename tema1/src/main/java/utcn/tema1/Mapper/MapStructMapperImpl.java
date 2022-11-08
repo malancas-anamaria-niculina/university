@@ -8,7 +8,6 @@ import utcn.tema1.DTO.TransitionDto;
 import utcn.tema1.Entity.Location;
 import utcn.tema1.Entity.Petri;
 import utcn.tema1.Entity.Transition;
-import utcn.tema1.Service.PetriService;
 
 @Component
 public class MapStructMapperImpl implements MapStructMapper {
@@ -21,10 +20,8 @@ public class MapStructMapperImpl implements MapStructMapper {
         Location location = new Location();
 
         location.setPetriId(locationDto.getPetriId());
-        location.setEntryTransitionId(locationDto.getEntryTransitionId());
         location.setLocationName(locationDto.getLocationName());
         location.setNumberOfTokens(locationDto.getNumberOfTokens());
-        location.setOutputTransitionId(location.getOutputTransitionId());
 
         return location;
     }
@@ -38,13 +35,10 @@ public class MapStructMapperImpl implements MapStructMapper {
 
         Transition transition = new Transition();
 
-        transition.setEntryLocationId(transitionDto.getEntryLocationId());
-        transition.setOutputLocationId(transitionDto.getOutputLocationId());
         transition.setSecondsOfExecution(transitionDto.getSecondsOfExecution());
         transition.setTempStart(transitionDto.getTempStart());
         transition.setTempStop(transitionDto.getTempStop());
         transition.setTransitionName(transitionDto.getTransitionName());
-        transition.setPetriId(transitionDto.getPetriId());
         
         return transition;
     }

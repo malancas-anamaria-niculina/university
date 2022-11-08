@@ -1,13 +1,18 @@
 package utcn.tema1.Entity;
 
-import lombok.Data;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import lombok.Data;
 
 @Data
 @Entity
@@ -23,8 +28,10 @@ public class Location {
     private String locationName;
     @Column(name = "nr_of_tokens", nullable = false)
     private Integer numberOfTokens;
-    @Column(name = "entry_transition_id", nullable = true)
-    private Integer entryTransitionId;
-    @Column(name = "out_transition_id", nullable = true)
-    private Integer outputTransitionId;
+    @Column(name = "type", nullable = false)
+    private Integer type;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "petri_id", referencedColumnName = "id")
+    private List<Petri> petri;
 }

@@ -2,6 +2,8 @@ package utcn.tema1.Entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,8 +21,6 @@ public class Transition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "petri_id", nullable = false, unique = false)
-    private Integer petriId;
 
     @Column(name = "name", nullable = false, unique = false)
     private String transitionName;
@@ -30,8 +30,11 @@ public class Transition {
     private Integer tempStop;
     @Column(name = "execution_seconds", nullable = true)
     private Integer secondsOfExecution;
-    @Column(name = "entry_location_id", nullable = true)
-    private Integer entryLocationId;
-    @Column(name = "out_location_id", nullable = true)
-    private Integer outputLocationId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "petri_id", referencedColumnName = "id")
+    private List<Petri> petri;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private List<Location> entryLocation;
 }

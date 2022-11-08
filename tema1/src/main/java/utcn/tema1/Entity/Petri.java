@@ -2,15 +2,11 @@ package utcn.tema1.Entity;
 
 import lombok.Data;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Data
@@ -23,4 +19,6 @@ public class Petri {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
+    @Column(name = "type", nullable = false, unique = true)
+    private String type;
 }

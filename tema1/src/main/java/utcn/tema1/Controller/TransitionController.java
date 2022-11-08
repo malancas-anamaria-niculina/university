@@ -15,7 +15,7 @@ public class TransitionController {
     @Autowired
     private TransitionService transitionService;
 
-    @PostMapping(value = "/", consumes = { "application/json" })
+    /*@PostMapping(value = "/", consumes = { "application/json" })
     public void addTransition(@RequestBody TransitionDto transitionDto) {
         transitionService.addTransition(transitionDto);
     }
@@ -23,5 +23,5 @@ public class TransitionController {
     @PostMapping(value = "/execute/")
     public void executeTransition(@RequestHeader(name = "transitionName") String transitionName) {
         transitionService.executeTransition(transitionName);
-    }
+    }*/
 }
