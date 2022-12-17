@@ -21,7 +21,7 @@ public class MapStructMapperImpl implements MapStructMapper {
         Location location = new Location();
 
         location.setId(locationDto.getLocationId());
-        location.setPetriId(locationDto.getPetriId());
+        // location.setPetriId(locationDto.getPetriId());
         location.setLocationName(locationDto.getLocationName());
         location.setNumberOfTokens(locationDto.getNumberOfTokens());
         location.setType(locationDto.getType());
@@ -42,7 +42,7 @@ public class MapStructMapperImpl implements MapStructMapper {
         transition.setTempStart(transitionDto.getTempStart());
         transition.setTempStop(transitionDto.getTempStop());
         transition.setTransitionName(transitionDto.getTransitionName());
-        
+
         return transition;
     }
 

@@ -24,9 +24,12 @@ public class LocationService {
     private MapStructMapper mapstructMapper;
 
     public List<Location> getLocationNames(Integer petriId) {
-        List<Location> locations = locationRepository.findAll().stream()
-                .filter(location -> location.getPetriId() == petriId).collect(Collectors.toList());
-
+        /*
+         * List<Location> locations = locationRepository.findAll().stream()
+         * .filter(location -> location.getPetriNetById(petriId).getPetriId() ==
+         * petriId).collect(Collectors.toList());
+         */
+        List<Location> locations = null;
         return locations;
     }
 
